@@ -1,16 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import './PostItem.scss';
 
-const PostItem = ({ title, created_ad, _id }) => (
+const PostItem = ({ title, createdAt, _id }) => (
     <article className="post-item">
-        <a href={'/post/' + _id} >
+        <Link to={'/post/' + _id} >
             <h3>{ title }</h3>
-        </a>
-    <p>
-        <i>Posted on { created_ad }</i>
-        <a href="#">Remove</a>
-        <a href="#">Edit</a>
-    </p>
+        </Link>
+        <p>
+            <i>Posted on { createdAt }</i>
+            <a href="">Remove</a>
+            <Link to={`/post/${_id}/edit`}>Edit</Link>
+        </p>
     </article>
 )
 
