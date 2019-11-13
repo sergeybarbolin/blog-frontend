@@ -2,9 +2,11 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import HeaderBlock from './components/HeaderBlock';
-import PostsList from './components/PostsList';
 import AddPostForm from './components/AddPostForm';
 import FullPost from './components/FullPost';
+import NotFound from './components/NotFound';
+
+import PostsList from './modules/PostsList';
 
 function App() {
   return (
@@ -23,29 +25,13 @@ function App() {
         <div className="content">
           <BrowserRouter>
             <Switch>
-              <Route path="/" exact component={() => (
-                <PostsList posts={[
-                  {
-                    _id: '1',
-                    title: 'First post',
-                    createdAt: 'November 8, 2019'
-                  },
-                  {
-                    _id: '2',
-                    title: 'Second post',
-                    createdAt: 'November 8, 2019'
-                  },
-                  {
-                    _id: '3',
-                    title: 'Third post',
-                    createdAt: 'November 8, 2019'
-                  }
-                ]} />
-              )} />
+              <Route path="/" exact component={ PostsList } />
               <Route path="/post/:id" exact component={() => (
                 <FullPost title="Title" createdAt="test" />
               )} />
-              <Route path="/post/:id/edit" exact component={AddPostForm} />
+              <Route path="/post/:id/edit" exact component={ AddPostForm } />
+              <Route path="/post/:id/edit" exact component={ AddPostForm } />
+              <Route path="*" component={NotFound} />
             </Switch>
           </BrowserRouter>
         </div>

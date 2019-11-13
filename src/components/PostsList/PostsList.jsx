@@ -1,9 +1,9 @@
 import React from 'react';
 import PostItem from './../PostItem'
 
-const PostsList = ({ posts }) => (
+const PostsList = ({ items }) => (
     <section className="posts-list">
-        { posts.map(post => <PostItem key={post._id} {...post} /> )}
+        { items ? items.map(post => <PostItem key={post._id} {...post} /> ) : 'Loading...' }
     </section>
 )
 
